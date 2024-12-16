@@ -1,9 +1,15 @@
-import { CharacterCard } from "@/components/character";
+import { CharacterList } from "@/components/character-list";
 import { title } from "@/components/primitives";
 import type { Character, Info } from "@/types";
 
-export default async function Home() {
-  const characters = await getCharacters()
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string };
+}) {
+  const params = await searchParams
+  const page = params?.page ?? 1
+  const characters = await getCharacters(page as number)
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -13,11 +19,7 @@ export default async function Home() {
         <span className={title()}>Morty&nbsp;</span>
       </div>
 
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {characters?.results?.map((character) => (
-          <CharacterCard key={character.name} {...character} />
-        ))}
-      </div>
+      <CharacterList activePage={+page} data={characters?.results} totalPages={characters?.info?.pages} />
     </section>
   );
 }
@@ -27,8 +29,8 @@ type CharacterResult = {
   results: Character[]
 }
 
-async function getCharacters(): Promise<CharacterResult> {
-  const response = await fetch(`${process.env.API_URL}/character`)
+async function getCharacters(page = 1): Promise<CharacterResult> {
+  const response = await fetch(`${process.env.API_URL}/character/?page=${page}`)
   const data = await response.json();
   return data
 }
