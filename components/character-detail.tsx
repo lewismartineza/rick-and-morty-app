@@ -1,8 +1,8 @@
 "use client"
 
 import { Character } from "@/types";
-import { TimelineItem } from "./time-line-item";
 import { Image } from "@nextui-org/react";
+import { TimelineItem } from "./time-line-item";
 
 type CharacterDetailProps = {
     character: Character
@@ -36,7 +36,7 @@ export function CharacterDetail({ character }: CharacterDetailProps) {
                             <span className="text-green-400">Gender:</span> {character.gender}
                         </div>
                         <div>
-                            <span className="text-green-400">Origin:</span> {character.origin.name}
+                            <span className="text-green-400 origin">Origin:</span> {character.origin.name}
                         </div>
                         <div>
                             <span className="text-green-400">Location:</span> {character.location.name}
@@ -52,7 +52,7 @@ export function CharacterDetail({ character }: CharacterDetailProps) {
                 <h2 className="text-2xl font-bold mb-4">Episode Appearances</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     {character.episode.map((ep, index) => (
-                        <div key={index} className="bg-purple-800/50 p-2 rounded text-center text-sm">
+                        <div key={index} className="bg-purple-800/50 p-2 rounded text-center text-sm episode">
                             Episode {ep.split('/').pop()}
                         </div>
                     ))}

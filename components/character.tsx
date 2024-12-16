@@ -1,6 +1,7 @@
-import { Character } from "@/types"
+import { Card, CardFooter, Image } from "@nextui-org/react";
+
+import { Character } from "@/types";
 import Link from "next/link";
-import { Card, Image, CardFooter } from "@nextui-org/react"
 
 type CharacterCardProps = Pick<Character, 'id' | 'image' | 'name' | 'species' | 'status'>
 
@@ -13,7 +14,7 @@ const STATUS: Record<Character['status'], string> = {
 export function CharacterCard(character: CharacterCardProps) {
     return (
         <Link href={`/${character.id}`}>
-            <Card isFooterBlurred className="w-full h-[300px]">
+            <Card isFooterBlurred className="w-full h-[300px] character-item">
                 <Image
                     removeWrapper
                     alt="Card example background"
