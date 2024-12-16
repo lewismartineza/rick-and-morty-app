@@ -7,7 +7,7 @@
 	},
 	"files": {
 		"include": ["app/**/*.js", "app/**/*.ts", "app/**/*.tsx"],
-		"ignore": ["test", "node_modules"]
+		"ignore": ["test", "node_modules", "package.json"]
 	},
 	"formatter": {
 		"enabled": true,
