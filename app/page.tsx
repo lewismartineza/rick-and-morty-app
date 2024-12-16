@@ -1,6 +1,6 @@
 import { CharacterList } from "@/components/character-list";
 import { title } from "@/components/primitives";
-import type { Character, Info } from "@/types";
+import { getCharacters } from "@/services";
 
 export default async function Home({
   searchParams,
@@ -23,15 +23,4 @@ export default async function Home({
       <CharacterList activePage={+page} data={characters?.results} totalPages={characters?.info?.pages} />
     </section>
   );
-}
-
-type CharacterResult = {
-  info: Info,
-  results: Character[]
-}
-
-async function getCharacters(page = 1, search = ""): Promise<CharacterResult> {
-  const response = await fetch(`${process.env.API_URL}/character/?page=${page}&name=${search}`)
-  const data = await response.json();
-  return data
 }

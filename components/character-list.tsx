@@ -24,10 +24,15 @@ export function CharacterList({ data, totalPages, activePage }: CharacterListPro
                 ))}
             </div>
 
-            <Pagination showControls initialPage={activePage ?? DEFAULT_INITIAL_PAGE} total={totalPages} onChange={(page) => {
-                const query = createQueryString('page', `${page ?? DEFAULT_INITIAL_PAGE}`)
-                router.replace(query)
-            }} />
+            <Pagination 
+                showControls 
+                initialPage={activePage ?? DEFAULT_INITIAL_PAGE} 
+                total={totalPages} 
+                onChange={(page: number) => {
+                    const query = createQueryString('page', `${page ?? DEFAULT_INITIAL_PAGE}`)
+                    router.replace(query)}
+                } 
+            />
         </>
     )
 }
