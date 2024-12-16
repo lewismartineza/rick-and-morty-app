@@ -1,53 +1,62 @@
-# Next.js & NextUI Template
+# 🚀 Rick and Morty App
 
-This is a template for creating applications using Next.js 14 (app directory) and NextUI (v2).
+![Rick and Morty Banner](https://m.media-amazon.com/images/M/MV5BZGQyZjk2MzMtMTcyNC00NGU3LTlmNjItNDExMWM4ZDFhYmQ2XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg)
 
-[Try it on CodeSandbox](https://githubbox.com/nextui-org/next-app-template)
+Explora el multiverso de Rick and Morty con esta aplicación web construida con Next.js y React. Descubre personajes, episodios y ubicaciones de la serie utilizando la API oficial de Rick and Morty.
 
-## Technologies Used
+## ✨ Características
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [NextUI v2](https://nextui.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+- 🖼️ Interfaz de usuario moderna y responsive
+- 🔍 Búsqueda en tiempo real de personajes
+- 📊 Paginación para navegar por grandes conjuntos de datos
+- 🌓 Modo oscuro/claro
+- 🚀 Renderizado del lado del servidor (SSR) para un rendimiento óptimo
 
-## How to Use
+## 🛠️ Tecnologías Utilizadas
 
-### Use the template with create-next-app
+- [Next.js](https://nextjs.org/) - El framework de React para producción
+- [React](https://reactjs.org/) - Biblioteca de JavaScript para construir interfaces de usuario
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utility-first
+- [Rick and Morty API](https://rickandmortyapi.com/) - API oficial de Rick and Morty
 
-To create a new project based on this template using `create-next-app`, run the following command:
+## 🚀 Inicio Rápido
 
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
-```
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/rick-and-morty-explorer.git
+   ```
 
-### Install dependencies
+2. Instala las dependencias:
+   ```bash
+   cd rick-and-morty-explorer
+   pnpm install
+   ```
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
+3. Inicia el servidor de desarrollo:
+   ```bash
+   pnpm run dev
+   ```
 
-```bash
-npm install
-```
+4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
 
-### Run the development server
+## 🤝 Contribuir
 
-```bash
-npm run dev
-```
+Las contribuciones son bienvenidas. Por favor, abre un issue o realiza un pull request con tus ideas.
 
-### Setup pnpm (optional)
+1. Haz un Fork del proyecto
+2. Crea tu Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la Branch (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
+## 📄 Licencia
 
-```bash
-public-hoist-pattern[]=*@nextui-org/*
-```
+Distribuido bajo la Licencia MIT. Ver `LICENSE` para más información.
 
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
+## 📞 Contacto
 
-## License
+Link del Proyecto: [https://github.com/lewismartineza/rick-and-morty-explorer](https://github.com/lewismartineza/rick-and-morty-explorer)
 
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
+---
+
+Hecho con ❤️ y ☕ por [Lewis Martinez](https://github.com/lewismartineza)
