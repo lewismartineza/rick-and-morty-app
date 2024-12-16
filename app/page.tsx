@@ -9,7 +9,8 @@ export default async function Home({
 }) {
   const params = await searchParams
   const page = params?.page ?? 1
-  const characters = await getCharacters(page as number)
+  const search = params?.search ?? ""
+  const characters = await getCharacters(page as number, search)
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -29,8 +30,8 @@ type CharacterResult = {
   results: Character[]
 }
 
-async function getCharacters(page = 1): Promise<CharacterResult> {
-  const response = await fetch(`${process.env.API_URL}/character/?page=${page}`)
+async function getCharacters(page = 1, search = ""): Promise<CharacterResult> {
+  const response = await fetch(`${process.env.API_URL}/character/?page=${page}&name=${search}`)
   const data = await response.json();
   return data
 }

@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Navbar as NextUINavbar,
   NavbarContent,
@@ -5,7 +7,6 @@ import {
   NavbarBrand,
   NavbarItem,
 } from "@nextui-org/navbar";
-import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
 import { Input } from "@nextui-org/input";
 import NextLink from "next/link";
@@ -18,8 +19,23 @@ import {
   SearchIcon,
   Logo,
 } from "@/components/icons";
+import { useQueryString } from "@/hooks/use-query-string";
+import { useDebouncedCallback } from 'use-debounce';
 
 export const Navbar = () => {
+  const { router, pathname, searchParams } = useQueryString();
+
+  const handleSearch = useDebouncedCallback((term) => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', '1');
+    if (term) {
+      params.set('search', term);
+    } else {
+      params.delete('search');
+    }
+    router.replace(`${pathname}?${params.toString()}`);
+  }, 300);
+
   const searchInput = (
     <Input
       aria-label="Search"
@@ -32,7 +48,12 @@ export const Navbar = () => {
       startContent={
         <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
       }
+      name="search"
       type="search"
+      onChange={(evt) => {
+        const value = evt.target.value
+        handleSearch(value)
+      }}
     />
   );
 

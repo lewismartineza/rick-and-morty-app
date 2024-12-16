@@ -3,8 +3,7 @@
 import { Pagination } from "@nextui-org/pagination";
 import { Character } from "@/types";
 import { CharacterCard } from "@/components/character";
-import { useCallback } from "react";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useQueryString } from "@/hooks/use-query-string";
 
 type CharacterListProps = {
     data: Character[]
@@ -15,19 +14,7 @@ type CharacterListProps = {
 const DEFAULT_INITIAL_PAGE = 1
 
 export function CharacterList({ data, totalPages, activePage }: CharacterListProps) {
-    const router = useRouter()
-    const pathname = usePathname()
-    const searchParams = useSearchParams()
-
-    const createQueryString = useCallback(
-        (name: string, value: string) => {
-            const params = new URLSearchParams(searchParams.toString())
-            params.set(name, value)
-
-            return params.toString()
-        },
-        [searchParams]
-    )
+    const { router, pathname, createQueryString } = useQueryString();
 
     return (
         <>
