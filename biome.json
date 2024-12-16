@@ -6,9 +6,9 @@
 		"useIgnoreFile": false
 	},
 	"files": {
-    "include": ["app/**/*.js", "app/**/*.ts", "app/**/*.tsx"],
-    "ignore": ["test", "node_modules"]
-  	},
+		"include": ["app/**/*.js", "app/**/*.ts", "app/**/*.tsx"],
+		"ignore": ["test", "node_modules"]
+	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab"

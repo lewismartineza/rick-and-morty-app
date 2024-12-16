@@ -19,7 +19,7 @@ export function CharacterCard(character: CharacterCardProps) {
                     <p className="text-black text-tiny">{character.status === 'Alive' ? '🟢 Alive' : character.status === 'Dead' ? '🔴 Dead' : '❓ Unknown'}</p>
                 </div>
                 <Button className="text-tiny" color="primary" radius="full" size="sm">
-                    Notify Me
+                    More
                 </Button>
             </CardFooter>
         </Card>
