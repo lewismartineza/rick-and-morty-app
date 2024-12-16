@@ -1,9 +1,9 @@
 "use client"
 
-import { Pagination } from "@nextui-org/pagination";
-import { Character } from "@/types";
 import { CharacterCard } from "@/components/character";
 import { useQueryString } from "@/hooks/use-query-string";
+import { Character } from "@/types";
+import { Pagination } from "@nextui-org/pagination";
 
 type CharacterListProps = {
     data: Character[]
@@ -14,7 +14,7 @@ type CharacterListProps = {
 const DEFAULT_INITIAL_PAGE = 1
 
 export function CharacterList({ data, totalPages, activePage }: CharacterListProps) {
-    const { router, pathname, createQueryString } = useQueryString();
+    const { router, createQueryString } = useQueryString();
 
     return (
         <>
@@ -26,8 +26,7 @@ export function CharacterList({ data, totalPages, activePage }: CharacterListPro
 
             <Pagination showControls initialPage={activePage ?? DEFAULT_INITIAL_PAGE} total={totalPages} onChange={(page) => {
                 const query = createQueryString('page', `${page ?? DEFAULT_INITIAL_PAGE}`)
-                const url = `${pathname}?${query}`
-                router.push(url)
+                router.replace(query)
             }} />
         </>
     )
