@@ -1,9 +1,13 @@
 import { Character } from "@/types"
 import { Card, Image, CardFooter, Button } from "@nextui-org/react"
+import { useRouter } from "next/navigation";
+
 
 type CharacterCardProps = Pick<Character, 'id' | 'image' | 'name' | 'species' | 'status'>
 
 export function CharacterCard(character: CharacterCardProps) {
+    const router = useRouter()
+
     return (
         <Card isFooterBlurred className="w-full h-[300px]">
             <Image
@@ -18,7 +22,7 @@ export function CharacterCard(character: CharacterCardProps) {
                     <p className="text-black text-tiny">{character.species}</p>
                     <p className="text-black text-tiny">{character.status === 'Alive' ? '🟢 Alive' : character.status === 'Dead' ? '🔴 Dead' : '❓ Unknown'}</p>
                 </div>
-                <Button className="text-tiny" color="primary" radius="full" size="sm">
+                <Button className="text-tiny" color="primary" radius="full" size="sm" onClick={() => router.push(`${character.id}`)}>
                     More
                 </Button>
             </CardFooter>

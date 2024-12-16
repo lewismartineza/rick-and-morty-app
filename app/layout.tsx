@@ -1,13 +1,13 @@
 import "@/styles/globals.css";
-import { Metadata, Viewport } from "next";
 import { Link } from "@nextui-org/link";
 import clsx from "clsx";
+import type { Metadata, Viewport } from "next";
 
 import { Providers } from "./providers";
 
+import { Navbar } from "@/components/navbar";
 import { siteConfig } from "@/config/site";
 import { Orbitron } from "next/font/google";
-import { Navbar } from "@/components/navbar";
 
 const orbitron = Orbitron({ subsets: ["latin"] });
 
@@ -20,13 +20,6 @@ export const metadata: Metadata = {
 	icons: {
 		icon: "/rick-and-morty.png",
 	},
-};
-
-export const viewport: Viewport = {
-	themeColor: [
-		{ media: "(prefers-color-scheme: light)", color: "white" },
-		{ media: "(prefers-color-scheme: dark)", color: "black" },
-	],
 };
 
 export default function RootLayout({
