@@ -1,3 +1,5 @@
+"use client"
+
 import { Character } from "@/types"
 import { Card, Image, CardFooter, Button } from "@nextui-org/react"
 import { useRouter } from "next/navigation";
