@@ -37,7 +37,16 @@ Explora el multiverso de Rick and Morty con esta aplicación web construida con 
    pnpm run dev
    ```
 
-4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
+3. Correr pruebas:
+   ```bash
+   pnpm run test 
+   ```
+   
+   ```bash
+   pnpm run cy:open
+   ```
+
+5. Abre [http://localhost:3000](http://localhost:3000) en tu navegador para ver la aplicación.
 
 ## 🤝 Contribuir
 
