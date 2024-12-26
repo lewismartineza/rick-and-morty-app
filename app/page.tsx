@@ -1,17 +1,17 @@
 import { CharacterList } from "@/components/character-list";
 import { title } from "@/components/primitives";
 import { getCharacters } from "@/services";
-import { Suspense } from 'react';
+import { Suspense } from "react";
 
 type Request = {
-  searchParams: Promise<{[key: string]: string }>;
+  searchParams: Promise<{ [key: string]: string }>;
 };
 
-export default async function Home({searchParams}: Readonly<Request>) {
-  const params = await(searchParams)
-  const page = params?.page ?? 1
-  const search = params?.search ?? ""
-  const characters = await getCharacters(+page, search)
+export default async function Home({ searchParams }: Readonly<Request>) {
+  const params = await searchParams;
+  const page = params?.page ?? 1;
+  const search = params?.search ?? "";
+  const characters = await getCharacters(+page, search);
 
   return (
     <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
@@ -20,8 +20,9 @@ export default async function Home({searchParams}: Readonly<Request>) {
         <span className={title({ color: "violet" })}>&&nbsp;</span>
         <span className={title()}>Morty&nbsp;</span>
       </div>
+
       <Suspense fallback={<div>Loading...</div>}>
-        <CharacterList activePage={+page} data={characters?.results} totalPages={characters?.info?.pages} />
+        <CharacterList characters={characters} />
       </Suspense>
     </section>
   );
