@@ -1,29 +1,29 @@
 "use client"
 
 import {
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
-} from "@nextui-org/navbar";
-import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
-import NextLink from "next/link";
-
-import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  GithubIcon,
   DiscordIcon,
-  SearchIcon,
-  Logo,
+  GithubIcon,
+  SearchIcon
 } from "@/components/icons";
+import {
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenuToggle,
+  Navbar as NextUINavbar,
+} from "@nextui-org/navbar";
+
+import { ThemeSwitch } from "@/components/theme-switch";
+import { siteConfig } from "@/config/site";
 import { useQueryString } from "@/hooks/use-query-string";
+import { Input } from "@nextui-org/input";
+import { Link } from "@nextui-org/link";
+import NextLink from "next/link";
 import { useDebouncedCallback } from 'use-debounce';
 
 export const Navbar = () => {
   const { router, pathname, searchParams } = useQueryString();
+  const value = searchParams.get('search') ?? '';
 
   const handleSearch = useDebouncedCallback((term) => {
     const params = new URLSearchParams(searchParams);
@@ -38,6 +38,7 @@ export const Navbar = () => {
 
   const searchInput = (
     <Input
+      key={value}
       aria-label="Search"
       classNames={{
         inputWrapper: "bg-default-100",
@@ -54,6 +55,7 @@ export const Navbar = () => {
         const value = evt.target.value
         handleSearch(value)
       }}
+      defaultValue={value}
     />
   );
 
