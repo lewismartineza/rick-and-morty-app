@@ -13,7 +13,7 @@ const STATUS: Record<Character['status'], string> = {
 
 export function CharacterCard(character: CharacterCardProps) {
     return (
-        <Link href={`/${character.id}`}>
+        <Link href={`/${character.id}`} prefetch>
             <Card isFooterBlurred className="w-full h-[300px] character-item">
                 <Image
                     removeWrapper
