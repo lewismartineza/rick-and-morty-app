@@ -1,6 +1,6 @@
 "use client";
 
-import { QueryClient, QueryClientProvider as TSQueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider as TSQueryClientProvider, queryClient } from "@/utils/query-client";
 
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -8,17 +8,7 @@ type CustomQueryClientProviderProps = {
     readonly children: React.ReactNode;
 }
 
-const queryClient = new QueryClient({
-    defaultOptions: {
-        queries: {
-            staleTime: 1000 * 60 * 5,
-            gcTime: 1000 * 60 * 30,
-            retry: false,
-        },
-    },
-});
-
-function QueryClientProvider({ children }: CustomQueryClientProviderProps) {
+export function QueryClientProvider({ children }: CustomQueryClientProviderProps) {
     return (
         <TSQueryClientProvider client={queryClient}>
             {children}
@@ -27,5 +17,4 @@ function QueryClientProvider({ children }: CustomQueryClientProviderProps) {
     );
 }
 
-export * from "@tanstack/react-query";
-export { QueryClientProvider };
+
