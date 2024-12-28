@@ -1,4 +1,4 @@
-import "./character.scss";
+import * as motion from "motion/react-client";
 
 import { Card, CardFooter, Image } from "@nextui-org/react";
 
@@ -13,24 +13,29 @@ const STATUS: Record<Character['status'], string> = {
     'unknown': '❓ Unknown'
 }
 
-export function CharacterCard(character: Readonly<CharacterCardProps>) {
+export function CharacterCard(character: CharacterCardProps) {
     return (
-        <Link href={`/${character.id}`} prefetch>
-            <Card isFooterBlurred className="character-item">
-                <Image
-                    removeWrapper
-                    alt="Card example background"
-                    className="character-item__image"
-                    src={character.image}
-                />
-                <CardFooter className="character-item__footer">
-                    <div>
-                        <p className="text-purple character-item__footer__name">{character.name}</p>
-                        <p className="text-black text-tiny">{character.species}</p>
-                        <p className="text-black text-tiny">{STATUS[character.status]}</p>
-                    </div>
-                </CardFooter>
-            </Card>
-        </Link>
+        <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.8 }}
+        >
+            <Link href={`/${character.id}`} prefetch>
+                <Card isFooterBlurred className="w-full h-[300px] character-item">
+                    <Image
+                        removeWrapper
+                        alt="Card example background"
+                        className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
+                        src={character.image}
+                    />
+                    <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
+                        <div>
+                            <p className="text-[purple] font-bold text-md">{character.name}</p>
+                            <p className="text-black text-tiny">{character.species}</p>
+                            <p className="text-black text-tiny">{STATUS[character.status]}</p>
+                        </div>
+                    </CardFooter>
+                </Card>
+            </Link>
+        </motion.div>
     )
 }
