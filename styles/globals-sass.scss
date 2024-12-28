@@ -1,0 +1,33 @@
+$purple: #800080;
+$white: #fff;
+$black: #000;
+$fs-tiny: 0.75rem;
+$green: rgb(74, 222, 128);
+
+.text-purple {
+  color: $purple;
+}
+
+.text-white {
+  color: $white;
+}
+
+.text-black {
+  color: $black;
+}
+
+.text-green {
+  color: $green;
+}
+
+.bg-green {
+  background-color: $green;
+}
+
+.fs-tiny {
+  font-size: $fs-tiny;
+}
+
+.font-bold {
+  font-weight: bold;
+}

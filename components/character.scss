@@ -1,0 +1,26 @@
+.character-item {
+  width: 100%;
+  height: 300px;
+  &__image {
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    transform: translate(0, 0) rotate(0) scaleX(1.25) scaleY(1.25);
+    object-fit: cover;
+    &:hover {
+      transform: translate(0, 0) rotate(0) scaleX(1.1) scaleY(1.1);
+    }
+  }
+  &__footer {
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    justify-content: space-between;
+    border-color: rgb(244, 244, 245, 0.5);
+    background-color: rgb(255, 255, 255, 0.3);
+    &__name {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+}

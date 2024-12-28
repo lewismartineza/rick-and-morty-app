@@ -1,3 +1,5 @@
+import "./character.scss";
+
 import { Card, CardFooter, Image } from "@nextui-org/react";
 
 import { Character } from "@/types";
@@ -11,19 +13,19 @@ const STATUS: Record<Character['status'], string> = {
     'unknown': '❓ Unknown'
 }
 
-export function CharacterCard(character: CharacterCardProps) {
+export function CharacterCard(character: Readonly<CharacterCardProps>) {
     return (
         <Link href={`/${character.id}`} prefetch>
-            <Card isFooterBlurred className="w-full h-[300px] character-item">
+            <Card isFooterBlurred className="character-item">
                 <Image
                     removeWrapper
                     alt="Card example background"
-                    className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
+                    className="character-item__image"
                     src={character.image}
                 />
-                <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between">
+                <CardFooter className="character-item__footer">
                     <div>
-                        <p className="text-[purple] font-bold text-md">{character.name}</p>
+                        <p className="text-purple character-item__footer__name">{character.name}</p>
                         <p className="text-black text-tiny">{character.species}</p>
                         <p className="text-black text-tiny">{STATUS[character.status]}</p>
                     </div>

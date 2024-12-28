@@ -1,3 +1,4 @@
+import "@/styles/globals-sass.scss";
 import "@/styles/globals.css";
 
 import { Navbar } from "@/components/navbar";
@@ -53,7 +54,7 @@ export default function RootLayout({
 									href="/"
 								>
 									<span className="text-default-600">Powered by</span>
-									<p className="text-primary">Lewis Martinez Ahumada</p>
+									<p className="text-purple">Lewis Martinez Ahumada</p>
 								</Link>
 							</footer>
 						</div>

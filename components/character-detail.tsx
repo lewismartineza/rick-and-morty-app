@@ -1,5 +1,7 @@
 "use client"
 
+import "./character-detail.scss";
+
 import { useGetCharacterDetail } from "@/hooks";
 import { Character } from "@/types";
 import { Image } from "@nextui-org/react";
@@ -17,7 +19,7 @@ export function CharacterDetail({ character }: CharacterDetailProps) {
     if (isError) return <div>Error to load character.</div>
 
     return (
-        <div className="bg-purple-900/60 rounded-lg overflow-hidden shadow-xl">
+        <div className="character-detail-container">
             <div className="md:flex">
                 <div className="md:flex-shrink-0 flex justify-center">
                     <Image
@@ -25,7 +27,7 @@ export function CharacterDetail({ character }: CharacterDetailProps) {
                         alt={data?.name}
                         width={300}
                         height={300}
-                        className="h-full w-full object-cover "
+                        className="banner--image"
                     />
                 </div>
                 <div className="p-8 text-center lg:w-full md:w-96">
@@ -40,36 +42,36 @@ export function CharacterDetail({ character }: CharacterDetailProps) {
                     </p>
                     <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
-                            <span className="text-green-400">Gender:</span> {data?.gender}
+                            <span className="text-green">Gender:</span> {data?.gender}
                         </div>
                         <div>
-                            <span className="text-green-400 origin">Origin:</span> {data?.origin.name}
+                            <span className="text-green origin">Origin:</span> {data?.origin.name}
                         </div>
                         <div>
-                            <span className="text-green-400">Location:</span> {data?.location.name}
+                            <span className="text-green">Location:</span> {data?.location.name}
                         </div>
                         <div>
-                            <span className="text-green-400">Episodes:</span> {data?.episode.length}
+                            <span className="text-green">Episodes:</span> {data?.episode.length}
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="px-8 py-6 bg-purple-950/50">
-                <h2 className="text-2xl font-bold mb-4">Episode Appearances</h2>
+            <div className="episodes">
+                <h2 className="episodes--title">Episode Appearances</h2>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-                    {data?.episode.map((ep, index) => (
-                        <div key={index} className="bg-purple-800/50 p-2 rounded text-center text-sm episode" data-testid="episode">
+                    {data?.episode.map((ep) => (
+                        <div key={ep} className="episodes--item" data-testid="episode">
                             Episode {ep.split('/').pop()}
                         </div>
                     ))}
                 </div>
             </div>
 
-            <div className="px-8 py-6 bg-purple-900/40">
-                <h2 className="text-2xl font-bold mb-4">Character Timeline</h2>
+            <div className="character-timeline">
+                <h2 className="character-timeline--title">Character Timeline</h2>
                 <div className="relative">
-                    <div className="absolute h-full w-1 bg-green-500 left-1/2 transform -translate-x-1/2" />
+                    <div className="absolute h-full w-1 bg-green left-1/2 transform -translate-x-1/2" />
                     <div className="flex flex-col space-y-8">
                         <TimelineItem title="First Appearance" content={`Episode ${data?.episode[0].split('/').pop()}`} />
                         <TimelineItem title="Origin" content={data?.origin.name ?? ""} />
@@ -79,7 +81,7 @@ export function CharacterDetail({ character }: CharacterDetailProps) {
                 </div>
             </div>
 
-            <div className="px-8 py-6 bg-purple-950/50 text-center">
+            <div className="date-added">
                 <p className="text-sm text-gray-400">
                     Character added to database on: {new Date(data?.created ?? "").toLocaleDateString()}
                 </p>

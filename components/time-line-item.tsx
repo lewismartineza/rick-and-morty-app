@@ -1,11 +1,18 @@
-export function TimelineItem({ title, content }: { title: string; content: string }) {
+import "./time-line-item.scss";
+
+type TimeLineItemProps = {
+    readonly title: string;
+    readonly content: string
+};
+
+export function TimelineItem({ title, content }: TimeLineItemProps) {
     return (
-        <div className="flex items-center">
-            <div className="flex-1 text-right pr-4">
-                <h3 className="font-bold text-green-400">{title}</h3>
+        <div className="timeline-item">
+            <div className="timeline-item--title">
+                <h3 className="font-bold text-green">{title}</h3>
             </div>
-            <div className="w-3 h-3 bg-green-500 rounded-full z-10"></div>
-            <div className="flex-1 pl-4">
+            <div className="bg-green timeline-item--separator"></div>
+            <div className="timeline-item--content">
                 <p>{content}</p>
             </div>
         </div>
