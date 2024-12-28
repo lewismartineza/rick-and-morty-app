@@ -1,5 +1,7 @@
 "use client"
 
+import "./navbar.scss";
+
 import {
   DiscordIcon,
   GithubIcon,
@@ -47,7 +49,7 @@ export const Navbar = () => {
       labelPlacement="outside"
       placeholder="Search..."
       startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
+        <SearchIcon className="icon-search" />
       }
       name="search"
       type="search"
