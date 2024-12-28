@@ -1,4 +1,4 @@
-import "@/styles/global-sass.scss";
+import "@/styles/globals-sass.scss";
 import "@/styles/globals.css";
 
 import { Navbar } from "@/components/navbar";
