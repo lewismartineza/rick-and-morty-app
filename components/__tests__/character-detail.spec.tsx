@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 
 import { Character } from "@/types";
 import { CharacterDetail } from "../character-detail";
+import { QueryClientProvider } from "../query-client";
 
 // Mock del componente TimelineItem
 jest.mock("../time-line-item", () => ({
@@ -11,6 +12,12 @@ jest.mock("../time-line-item", () => ({
     </div>
   ),
 }));
+
+jest.mock("next/navigation", () => {
+  return {
+    useParams: jest.fn(() => ({ id: "1" })),
+  }
+})
 
 // Mock de los datos del personaje
 const mockCharacter: Character = {
@@ -31,9 +38,19 @@ const mockCharacter: Character = {
   url: "https://rickandmortyapi.com",
 };
 
+function renderCharacterDetail(character: Character = mockCharacter) {
+  return render(
+    <QueryClientProvider>
+      <CharacterDetail character={character} />
+    </QueryClientProvider>
+  );
+}
+
 describe("CharacterDetail Component", () => {
   it("renders character image with correct alt text", () => {
-    render(<CharacterDetail character={mockCharacter} />);
+    window.history.pushState({}, "Character Detail", "/character/1");
+
+    renderCharacterDetail();
 
     const image = screen.getByRole("img", { name: /rick sanchez/i });
     expect(image).toBeInTheDocument();
@@ -44,7 +61,7 @@ describe("CharacterDetail Component", () => {
   });
 
   it("displays character basic information", () => {
-    render(<CharacterDetail character={mockCharacter} />);
+    renderCharacterDetail();
 
     expect(screen.getByText("Human - Alive")).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Rick Sanchez" })).toBeInTheDocument();
@@ -52,19 +69,19 @@ describe("CharacterDetail Component", () => {
   });
 
   it("renders episode appearances correctly", () => {
-    render(<CharacterDetail character={mockCharacter} />);
+    renderCharacterDetail();
 
     const episodes = screen.getAllByTestId("episode")
-    
+
     expect(episodes).toHaveLength(2);
-    
+
     episodes.forEach((episode, index) => {
       expect(episode).toHaveTextContent(`Episode ${index + 1}`);
     });
   });
 
   it("displays character timeline", () => {
-    render(<CharacterDetail character={mockCharacter} />);
+    renderCharacterDetail();
 
     const timelineItems = screen.getAllByTestId("timeline-item");
     expect(timelineItems).toHaveLength(4);
@@ -76,7 +93,7 @@ describe("CharacterDetail Component", () => {
   });
 
   it("displays character creation date", () => {
-    render(<CharacterDetail character={mockCharacter} />);
+    renderCharacterDetail();
 
     expect(
       screen.getByText("Character added to database on: 11/4/2017")
