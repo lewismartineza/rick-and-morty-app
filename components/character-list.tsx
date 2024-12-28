@@ -1,5 +1,7 @@
 "use client"
 
+import "./character-list.scss";
+
 import { useGetCharacters, useQueryString } from "@/hooks";
 
 import { CharacterCard } from "@/components/character";
@@ -24,7 +26,7 @@ export function CharacterList({ characters }: CharacterListProps) {
 
     return (
         <>
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="character-list">
                 {data?.results?.map((character) => (
                     <CharacterCard key={character?.id} {...character} />
                 ))}
