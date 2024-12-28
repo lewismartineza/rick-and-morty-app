@@ -1,5 +1,7 @@
 "use client"
 
+import * as motion from "motion/react-client";
+
 import { useGetCharacters, useQueryString } from "@/hooks";
 
 import { CharacterCard } from "@/components/character";
@@ -26,7 +28,17 @@ export function CharacterList({ characters }: CharacterListProps) {
         <>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {data?.results?.map((character) => (
-                    <CharacterCard key={character?.id} {...character} />
+                    <motion.div
+                        key={character?.id} 
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1, }}
+                        transition={{
+                            duration: 0.4,
+                            scale: { type: "keyframes", visualDuration: 0.4, bounce: 0.5 },
+                        }}
+                    >
+                    <CharacterCard {...character} />
+                    </motion.div>
                 ))}
             </div>
 
